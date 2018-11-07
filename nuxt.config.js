@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'my-first-nuxt-app',
     titleTemplate: '%s | Nuxt.js tag items viewer',
@@ -14,9 +11,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: '#3B8070' },
   modules: [
     '@nuxtjs/axios'
@@ -30,13 +24,12 @@ module.exports = {
   env: {
     QIITA_TOKEN: process.env.QIITA_TOKEN
   },
-  /*
-  ** Build configuration
-  */
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
   build: {
-    /*
-    ** Run ESLint on save
-    */
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
